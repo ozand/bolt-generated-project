@@ -1,24 +1,30 @@
+import styles from './ArticleCard.module.css';
+
 const ArticleCard = ({ article, onTagClick }) => {
   return (
-    <div className="border p-4 rounded shadow-md">
-      <h2 className="text-xl font-bold">{article.title}</h2>
-      <div className="flex space-x-2 mt-2">
+    <div className={styles.card}>
+      <h2 className={styles.title}>{article.title}</h2>
+      <div className={styles.tags}>
         {article.tags.map((tag, index) => (
           <span
             key={index}
-            className="text-sm text-blue-500 cursor-pointer"
+            className={styles.tag}
             onClick={() => onTagClick(tag)}
           >
             {tag}
           </span>
         ))}
       </div>
-      <div className="mt-2 flex items-center space-x-2">
-        <img src={article.author.avatar} alt={article.author.name} className="w-8 h-8 rounded-full" />
+      <div className={styles.author}>
+        <img 
+          src={article.author.avatar} 
+          alt={article.author.name} 
+          className={styles.avatar}
+        />
         <span>{article.author.name}</span>
         <span>{article.date}</span>
       </div>
-      <div className="mt-2 flex space-x-4">
+      <div className={styles.stats}>
         <span>{article.comments} comments</span>
         <span>{article.reactions} reactions</span>
         <span>{article.readingTime} min read</span>
